@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import AppNavBar from './components/Layout/AppNavBar';
 import CreateFighter from './components/CreateFighter/CreateFighter';
+import PlayGame from './components/Game/PlayGame';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
           <Container>          
             <Switch>
               <Route exact path='/' component={CreateFighter} />
-              {/* <Route path='/play' component={PlayGame} /> */}
+              <Route path='/play' component={PlayGame} />
             </Switch>
           </Container>
         </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
     Navbar,
     NavbarBrand,
@@ -20,7 +21,9 @@ class AppNavBar extends Component{
             <div>
                 <Navbar color="dark" dark expand="sm" className="mb-5">
                     <Container>
-                        <NavbarBrand>Fantasy Fighter</NavbarBrand>
+                        <NavbarBrand>
+                            <Link to='/'>Fantasy Fighter</Link>
+                        </NavbarBrand>
                     </Container>
                 </Navbar>
             </div>

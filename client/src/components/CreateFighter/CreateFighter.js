@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import{
     Form,
     FormGroup,
@@ -45,7 +45,7 @@ class CreateFighter extends Component {
     handleSubmit = e => {
         e.preventDefault();
         //validation and routing
-        if(!this.state.name == null) return <Redirect to='/PlayGame' />
+        //if(!this.state.name === '') return <Redirect to='/PlayGame' />
     }
 
     // fetchCharacterImage = () => {
@@ -81,7 +81,9 @@ class CreateFighter extends Component {
                             <option>Jiu Jitsu</option>
                             <option>Judo</option>
                         </Input>
-                        <Button block color="dark">GO FIGHT</Button>
+                        <Button block color="dark">
+                            <Link to='/play'>GO FIGHT</Link>
+                        </Button>
                     </FormGroup>
                 </Form>
             </div>

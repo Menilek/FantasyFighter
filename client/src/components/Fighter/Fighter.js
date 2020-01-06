@@ -4,13 +4,11 @@ import{ Card,
     CardTitle,
     CardBody} from 'reactstrap';
 
-//Set card colour as red vs blue for gameplay
-
 const Fighter = (props) => {
-    const { name } = props;
+    const { name, color } = props;
     return (
         <div>
-            <Card body inverse color="success" className="text-center">
+            <Card body inverse color={color} className="text-center">
                 <CardImg top width="auto" src="../../../public/img/fighter.jpg" alt="Fight character" />
                 <CardBody>
                     <CardTitle> {name} </CardTitle>
