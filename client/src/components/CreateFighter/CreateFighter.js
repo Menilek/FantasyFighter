@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import{ Card,
-    CardImg,
-    CardTitle,
-    CardBody,
+import { Redirect } from 'react-router-dom';
+import{
     Form,
     FormGroup,
     Label,
     Input,
     Button } from 'reactstrap';
+import Fighter from '../Fighter/Fighter';
 
 class CreateFighter extends Component {
     state = {
@@ -46,6 +45,7 @@ class CreateFighter extends Component {
     handleSubmit = e => {
         e.preventDefault();
         //validation and routing
+        if(!this.state.name == null) return <Redirect to='/PlayGame' />
     }
 
     // fetchCharacterImage = () => {
@@ -60,12 +60,7 @@ class CreateFighter extends Component {
             <div>
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
-                        <Card body className="text-center">
-                            <CardImg top width="auto" src="../../../public/img/fighter.jpg" alt="Fight character" />
-                            <CardBody>
-                                <CardTitle> {this.state.name} </CardTitle>
-                            </CardBody>
-                        </Card>
+                        <Fighter props={this.state.name} />
                         <Label for="characterName">Name</Label>
                         <Input
                             type="text"
@@ -86,7 +81,7 @@ class CreateFighter extends Component {
                             <option>Jiu Jitsu</option>
                             <option>Judo</option>
                         </Input>
-                        <Button>GO FIGHT</Button>
+                        <Button block color="dark">GO FIGHT</Button>
                     </FormGroup>
                 </Form>
             </div>
