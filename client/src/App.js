@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import AppNavBar from './components/Layout/AppNavBar';
 import CreateFighter from './components/CreateFighter/CreateFighter';
@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <div className='App'>
           <AppNavBar />
           <Container>          
@@ -19,7 +19,7 @@ class App extends Component {
             </Switch>
           </Container>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

@@ -1,15 +1,35 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 import Fighter from '../Fighter/Fighter';
 import { Container, Row, Col, Button } from 'reactstrap';
 
 class PlayGame extends Component {
 
-    cardState = {
-        stubPlayerName: 'Berzerker',
-        stubOpponentName: 'Godzilla',
-        playerColour: 'danger',
-        opponentColour: 'primary'
+    constructor(props){
+        super(props);
+        this.state = {
+            playerName: 'Berzerker',
+            opponentName: 'Godzilla',
+            playerColour: 'danger',
+            opponentColour: 'primary'
+        }
+    }
+
+    //Opponent cannot be the same character - check that id's are not the same
+    //Validation against empty collection - collection should not be empty due to cpu generated fighters
+    getOpponent(){
+        axios.get('/api/fighter').then(res => {
+            const name = res.data.name;
+            console.log(res.data);
+            this.setState({
+                opponentName: name,
+                opponentColour: 'primary'
+            })
+        });
+    }
+
+    componentDidMount(){
+        this.getOpponent();
     }
 
     render(){
@@ -18,13 +38,13 @@ class PlayGame extends Component {
                 <Container>
                     <Row>
                         <Col xs="6" sm="4">
-                            <Fighter name={this.cardState.stubPlayerName} color={this.cardState.playerColour} />
+                            <Fighter name={this.state.playerName} color={this.state.playerColour} />
                         </Col>
                         <Col xs="6" sm="4">
                             <Button block color="success">FIGHT</Button>
                         </Col>
                         <Col xs="6" sm="4">
-                            <Fighter name={this.cardState.stubOpponentName} color={this.cardState.opponentColour} />
+                            <Fighter name={this.state.opponentName} color={this.state.opponentColour} />
                         </Col>
                     </Row>
                 </Container>               
