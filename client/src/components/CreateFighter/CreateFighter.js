@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import{
     Form,
@@ -15,11 +15,10 @@ class CreateFighter extends Component {
         this.state = {
             name: '',
             striking: 'Boxing',
-            grappling: 'Aikido'
+            grappling: 'Aikido',
+            redirect: false,
         }
     }
-
-    //^ state contains default form values
 
     // fightStyles = [
     //     'Aikido',
@@ -41,13 +40,13 @@ class CreateFighter extends Component {
     addNewFighter = newFighter => {
         axios.post('/api/fighter', newFighter).then(res => {
             console.log(res.data);
+            this.setState({redirect: true})
         }).catch(err => {
             console.log(err);});
     }
 
     onSubmit = e => {
         e.preventDefault();
-        //validation and routing
         const newFighter = {
             name: this.state.name,
             striking: this.state.striking,
@@ -55,21 +54,22 @@ class CreateFighter extends Component {
         };
 
         this.addNewFighter(newFighter);
-
-        // this.setState({
-        //     name: '',
-        //     striking: '',
-        //     grappling: ''
-        // })
     }
 
     // fetchCharacterImage = () => {
          //API call
     // }
 
+    renderRedirect = () => {
+        if (this.state.redirect) {
+          return <Redirect to='/play' />
+        }
+      }
+
     render(){
         return(
             <div>
+                {this.renderRedirect()}
                 <Form onSubmit={this.onSubmit}>
                     <FormGroup>
                         <Fighter props={this.state.name} />
@@ -93,11 +93,7 @@ class CreateFighter extends Component {
                             <option>Jiu Jitsu</option>
                             <option>Judo</option>
                         </Input>
-                        <Link to='/play'>
-                            <Button block color="dark">
-                                GO FIGHT
-                            </Button>
-                        </Link>
+                        <Button block color="dark" onClick={this.onSubmit}>GO FIGHT</Button>
                     </FormGroup>
                 </Form>
             </div>
