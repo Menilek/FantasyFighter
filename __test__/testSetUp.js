@@ -1,6 +1,6 @@
 const { seedDatabase } = require ('../seeds/index');
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise
+const db = require('../database');
 
 
 async function removeAllCollections(){
@@ -31,11 +31,12 @@ async function dropAllCollections(){
 
 module.exports = {
     setUpDB(dbName){
+        //jest.setTimeout(7000);
+
         //Connect to Mongoose
-        beforeAll(async () => {
-            const url = `mongodb://127.0.0.1/${dbName}`
-            await mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
-        })
+        // beforeAll(async () => {
+
+        // })
 
         //Seeding the DB
         beforeEach(async () => {

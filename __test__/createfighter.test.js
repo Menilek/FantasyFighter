@@ -1,12 +1,12 @@
 const supertest = require('supertest');
-const mongoose = require('mongoose');
+const app = require('../server');
 const Fighter = require('../models/Fighter');
-const app = require('../start');
 const { setUpDB } = require('./testSetUp');
 
 const request = supertest(app);
 
 const dbName = "test-fantasy-fighter";
+
 setUpDB(dbName)
 
 describe("Testing createFighter API", () => {
@@ -25,18 +25,21 @@ describe("Testing createFighter API", () => {
                 "striking": "Jeet Kun Do",
                 "grappling": "Aikido"
             })
-
-        //Checking if the fighter is in the DB
-        const fighter = await Fighter.findOne({name: "Law"})
-        expect(fighter.name).toBeTruthy()
-        expect(fighter.striking).toBeTruthy()
-        expect(fighter.grappling).toBeTruthy()
-        console.log(fighter)
             
         //Inspecting the response for the name, striking and grappling style
         expect(res.body.name).toBeTruthy()
         expect(res.body.striking).toBeTruthy()
         expect(res.body.grappling).toBeTruthy()
+            
+        //Checking the number of fighters in the DB
+        const fighters = await Fighter.find({})
+        expect(fighters.length).toBe(4)
+
+        //Checking if the fighter is in the DB
+        const fighter = await Fighter.findOne({name: 'Law'})
+        expect(fighter.name).toBeTruthy()
+        expect(fighter.striking).toBeTruthy()
+        expect(fighter.grappling).toBeTruthy()
 
         done();
     })

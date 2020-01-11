@@ -7,7 +7,6 @@ const Fighter = require('../../models/Fighter');
 // desc Create fighter
 // @access Public
 router.post('/', (req, res) => {
-    console.log(req.body);
     const {name, striking, grappling} = req.body;
 
     if(!name || !striking || !grappling){
@@ -18,10 +17,7 @@ router.post('/', (req, res) => {
         name,
         striking,
         grappling
-    });
-
-    console.log("CREATING FIGHTER");
-    
+    });    
     newFighter.save()
         .then(fighter => res.status(200).json(fighter))
         .catch(err => res.status(400).json({ success : false }))
@@ -30,10 +26,9 @@ router.post('/', (req, res) => {
 // @route GET api/fighter
 // Get an opponent
 // @access Public
-router.get('/', (req, res) => {
-    console.log("GETTING FIGHTER");
+router.get('/', async (req, res) => {
     Fighter.findOne(req.fighter)
-        .then(fighter => res.json(fighter));
+        .then(fighter => res.status(200).json(fighter));
 });
 
 module.exports = router;
