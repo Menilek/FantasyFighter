@@ -15,5 +15,4 @@ mongoose
 
 app.use('/api/fighter', require('./routes/api/fighter'));
 
-const port = 8000;
-app.listen(port, () => console.log(`Server started on port: ${port}`));
+module.exports = app;
