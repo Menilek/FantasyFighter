@@ -22,4 +22,4 @@ jobs:
           paths:
             - ./node_modules
 
-    working_directory: ~/repo 
+    working_directory: ~/repo
