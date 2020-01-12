@@ -1,0 +1,20 @@
+form, .navbar, .btn, .link, .game-title, .card-title{
+    font-weight: bolder ;
+}
+
+.card-title{
+    font-size: 1.25rem;
+}
+
+.game-title{
+    color: #ffffff;
+
+}
+.game-title:hover{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.btn, .navbar{
+    background-color: #000000;
+}

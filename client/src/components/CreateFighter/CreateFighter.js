@@ -6,7 +6,9 @@ import{
     FormGroup,
     Label,
     Input,
-    Button } from 'reactstrap';
+    Button,
+    Row,
+    Col } from 'reactstrap';
 import Fighter from '../Fighter/Fighter';
 
 class CreateFighter extends Component {
@@ -73,28 +75,39 @@ class CreateFighter extends Component {
                 <Form onSubmit={this.onSubmit}>
                     <FormGroup>
                         <Fighter props={this.state.name} />
-                        <Label for="characterName">Name</Label>
+                        <Label for="characterName" size="lg">Name</Label>
                         <Input
                             type="text"
                             name="name"
                             id="characterName"
                             placeholder="Enter Character Name"
+                            bsSize="lg"
                             onChange={this.onChange}>
                         </Input>
-                        <Label for="striking">Striking Style</Label>
-                        <Input type="select" name="striking" id="striking" onChange={this.onChange}>
-                            <option>Boxing</option>
-                            <option>Karate</option>
-                            <option>Muay Thai</option>
-                        </Input>
-                        <Label for="grappling">Grappling Style</Label>
-                        <Input type="select" name="grappling" id="grappling" onChange={this.onChange}>
-                            <option>Aikido</option>
-                            <option>Jiu Jitsu</option>
-                            <option>Judo</option>
-                        </Input>
-                        <Button block color="dark" onClick={this.onSubmit}>GO FIGHT</Button>
                     </FormGroup>
+                    <Row form>
+                        <Col md="6">
+                            <FormGroup>
+                                <Label for="striking" size="lg">Striking Style</Label>
+                                <Input type="select" name="striking" id="striking" bsSize="lg" onChange={this.onChange}>
+                                    <option>Boxing</option>
+                                    <option>Karate</option>
+                                    <option>Muay Thai</option>
+                                </Input>
+                            </FormGroup>
+                        </Col>
+                        <Col md="6">
+                            <FormGroup>
+                                <Label for="grappling" size="lg">Grappling Style</Label>
+                                <Input type="select" name="grappling" id="grappling" bsSize="lg" onChange={this.onChange}>
+                                    <option>Aikido</option>
+                                    <option>Jiu Jitsu</option>
+                                    <option>Judo</option>
+                                </Input>
+                            </FormGroup>
+                        </Col>
+                        <Button block size="lg" onClick={this.onSubmit}>GO FIGHT</Button>
+                    </Row>
                 </Form>
             </div>
         );

@@ -21,5 +21,5 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
-        
+
     working_directory: ~/repo
