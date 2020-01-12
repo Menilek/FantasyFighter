@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Fighter from '../Fighter/Fighter';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col, Button, Card, CardBody, CardImg } from 'reactstrap';
+import versusImg from '../../img/versus.jpg';
 
 class PlayGame extends Component {
 
@@ -37,13 +38,18 @@ class PlayGame extends Component {
             <div>
                 <Container>
                     <Row>
-                        <Col xs="6" sm="4">
+                        <Col xs="12" sm="4" md="4.5">
                             <Fighter name={this.state.playerName} color={this.state.playerColour} />
                         </Col>
-                        <Col xs="6" sm="4">
-                            <Button block color="success">FIGHT</Button>
+                        <Col xs="12" sm="4" md="2.5">
+                            <Card className="border-0">
+                                <CardBody>
+                                    <CardImg src={ versusImg } alt="VERSUS"/>
+                                    <Button block size="lg">FIGHT</Button>
+                                </CardBody>
+                            </Card>
                         </Col>
-                        <Col xs="6" sm="4">
+                        <Col xs="12" sm="4" md="4.5">
                             <Fighter name={this.state.opponentName} color={this.state.opponentColour} />
                         </Col>
                     </Row>

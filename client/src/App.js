@@ -5,6 +5,7 @@ import AppNavBar from './components/Layout/AppNavBar';
 import CreateFighter from './components/CreateFighter/CreateFighter';
 import PlayGame from './components/Game/PlayGame';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 class App extends Component {
   render() {
