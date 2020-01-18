@@ -16,12 +16,19 @@ class PlayGame extends Component {
         }
     }
 
-    //Opponent cannot be the same character - check that id's are not the same
-    //Validation against empty collection - collection should not be empty due to cpu generated fighters
+    getPlayer(){
+        const playerID = this.props.location.state.id;
+        axios.get(`/api/fighter/${playerID}`).then(res => {
+            this.setState({
+                playerName: res.data.name,
+                playerColour: 'danger'
+            })
+        });
+    }
+    
     getOpponent(){
         axios.get('/api/fighter').then(res => {
             const name = res.data.name;
-            console.log(res.data);
             this.setState({
                 opponentName: name,
                 opponentColour: 'primary'
@@ -31,6 +38,7 @@ class PlayGame extends Component {
 
     componentDidMount(){
         this.getOpponent();
+        this.getPlayer();
     }
 
     render(){

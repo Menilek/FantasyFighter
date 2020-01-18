@@ -9,12 +9,12 @@ const dbName = "test-fantasy-fighter";
 
 setUpDB(dbName)
 
-describe("Testing createFighter API", () => {
+describe("Testing Fighter API routes", () => {
     it("tests GET request to api/fighters route and returns true for success", async done => {
         //Sending post request
         const res = await request.get('/api/fighter')
-        expect(res.status).toBe(200);  
-        done()
+        expect(res.status).toBe(200)
+        done();
     })
 
     it("tests POST request to api/fighters route and returns true for success", async done => {
