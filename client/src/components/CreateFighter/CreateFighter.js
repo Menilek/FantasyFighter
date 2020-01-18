@@ -19,6 +19,7 @@ class CreateFighter extends Component {
             striking: 'Boxing',
             grappling: 'Aikido',
             redirect: false,
+            id: ''
         }
     }
 
@@ -41,8 +42,7 @@ class CreateFighter extends Component {
 
     addNewFighter = newFighter => {
         axios.post('/api/fighter', newFighter).then(res => {
-            console.log(res.data);
-            this.setState({redirect: true})
+            this.setState({id: res.data._id, redirect: true});
         }).catch(err => {
             console.log(err);});
     }
@@ -64,7 +64,7 @@ class CreateFighter extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-          return <Redirect to='/play' />
+          return <Redirect to={{pathname:'/play', state:{id: this.state.id}}}/>
         }
       }
 

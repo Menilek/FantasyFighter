@@ -16,6 +16,9 @@ setURL = () => {
 
 setURL();
 
+
+//useUnifiedTopology: true flag reported to randomly cause MongooseTimeoutError
+//setting it to false or removing it has been used as a fix though inconsistent
 const db = mongoose
     .connect(url, {useNewUrlParser: true, 'useCreateIndex': true, useUnifiedTopology: true})
     .then(() => console.log('MongoDB connected!'))
