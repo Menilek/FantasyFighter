@@ -17,7 +17,8 @@ router.post('/', (req, res) => {
         name,
         striking,
         grappling
-    });    
+    });
+
     newFighter.save()
         .then(fighter => res.status(200).json(fighter))
         .catch(err => res.status(400).json({ success : false }))
@@ -29,6 +30,23 @@ router.post('/', (req, res) => {
 router.get('/', async (req, res) => {
     Fighter.findOne(req.fighter)
         .then(fighter => res.status(200).json(fighter));
+});
+
+// @route GET api/fighter/id
+// Get player by id
+// @access Public
+router.get('/:id', (req, res) => {
+    const id = req.params.id;
+    Fighter.findById(req.params.id)
+        .then(fighter => {
+            if(!fighter){
+                let err = new Error("Unable to find that fighter");
+                err.status = 404;
+                return err;
+            }
+            req.fighter = fighter;
+            return res.status(200).json(req.fighter);
+        })
 });
 
 module.exports = router;
