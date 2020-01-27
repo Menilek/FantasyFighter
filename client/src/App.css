@@ -18,3 +18,8 @@ form, .navbar, .btn, .link, .game-title, .card-title{
 .btn, .navbar{
     background-color: #000000;
 }
+
+.danger{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
