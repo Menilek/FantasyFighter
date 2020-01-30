@@ -23,3 +23,16 @@ form, .navbar, .btn, .link, .game-title, .card-title{
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 }
+
+.modalContent{
+    text-align: center;
+}
+
+.fighter-form{
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 0.5rem;
+}
+
+.fighter-default-card{
+    border: 0px;
+}

@@ -9,7 +9,7 @@ import{
     Button,
     Row,
     Col } from 'reactstrap';
-import Fighter from '../Fighter/Fighter';
+import FighterDefault from '../Fighter/FighterDefault';
 
 class CreateFighter extends Component {
     constructor(props){
@@ -64,49 +64,44 @@ class CreateFighter extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-          return <Redirect to={{pathname:'/play', state:{id: this.state.id}}}/>
+            return <Redirect to={{pathname:'/play', state:{id: this.state.id}}}/>
         }
-      }
+    }
 
     render(){
         return(
             <div>
                 {this.renderRedirect()}
-                <Form onSubmit={this.onSubmit}>
-                    <FormGroup>
-                        <Fighter props={this.state.name} />
-                        <Label for="characterName" size="lg">Name</Label>
-                        <Input
-                            type="text"
-                            name="name"
-                            id="characterName"
-                            placeholder="Enter Character Name"
-                            bsSize="lg"
-                            onChange={this.onChange}>
-                        </Input>
-                    </FormGroup>
-                    <Row form>
-                        <Col md="6">
+                <Form className="fighter-form" onSubmit={this.onSubmit}>
+                    <Row>
+                        <Col sm="12"  md={{ size: 4, offset: 2 }}>                  
+                                <FighterDefault />
+                        </Col>
+                        <Col sm="12" md="4">
                             <FormGroup>
-                                <Label for="striking" size="lg">Striking Style</Label>
-                                <Input type="select" name="striking" id="striking" bsSize="lg" onChange={this.onChange}>
+                                <Label for="characterName">NAME</Label>
+                                <Input
+                                    type="text"
+                                    name="name"
+                                    id="characterName"
+                                    placeholder="Enter Character Name"
+                                    onChange={this.onChange}>
+                                </Input>
+                                <Label for="striking" >STRIKING STYLE</Label>
+                                <Input type="select" name="striking" id="striking" onChange={this.onChange}>
                                     <option>Boxing</option>
                                     <option>Karate</option>
                                     <option>Muay Thai</option>
                                 </Input>
-                            </FormGroup>
-                        </Col>
-                        <Col md="6">
-                            <FormGroup>
-                                <Label for="grappling" size="lg">Grappling Style</Label>
-                                <Input type="select" name="grappling" id="grappling" bsSize="lg" onChange={this.onChange}>
+                                <Label for="grappling" >GRAPPLING STYLE</Label>
+                                <Input type="select" name="grappling" id="grappling" onChange={this.onChange}>
                                     <option>Aikido</option>
                                     <option>Jiu Jitsu</option>
                                     <option>Judo</option>
                                 </Input>
                             </FormGroup>
-                        </Col>
                         <Button block size="lg" onClick={this.onSubmit}>GO FIGHT</Button>
+                        </Col>
                     </Row>
                 </Form>
             </div>
