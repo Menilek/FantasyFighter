@@ -22,7 +22,7 @@ class AppNavBar extends Component{
                 <Navbar expand="sm" className="mb-5">
                     <Container>
                         <NavbarBrand>
-                            <Link to='/' className="game-title">Fantasy Fighter</Link>
+                            <Link to='/' className="game-title">FANTASY FIGHTER</Link>
                         </NavbarBrand>
                     </Container>
                 </Navbar>

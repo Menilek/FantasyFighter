@@ -5,12 +5,12 @@ import{ Card,
     CardBody} from 'reactstrap';
 import defaultImg from '../../img/fighter.jpg';
 
-const Fighter = (props) => {
+const FighterPlayer = (props) => {
     const { name, color } = props;
     return (
         <div>
-            <Card body inverse color={color} className="text-center">
-                <CardImg src={ defaultImg } alt="Fight character" />
+            <Card body inverse color={ color } className="text-center">
+                <CardImg className={ color } src={ defaultImg } alt="Fight character" />
                 <CardBody>
                     <CardTitle> { name } </CardTitle>
                 </CardBody>
@@ -19,4 +19,4 @@ const Fighter = (props) => {
     )
 }
 
-export default Fighter;
+export default FighterPlayer;
