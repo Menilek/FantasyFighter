@@ -10,7 +10,8 @@
     "dev": "concurrently \"npm run start\" \"npm run client\"",
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-prebuild": "npm run --dev",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "author": "Menilek",
   "license": "ISC",
